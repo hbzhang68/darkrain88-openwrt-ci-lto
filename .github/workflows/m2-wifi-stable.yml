@@ -1,4 +1,4 @@
-name: Taiyi-Stable
+name: m2wifi-Stable
 
 on:
   workflow_dispatch:
