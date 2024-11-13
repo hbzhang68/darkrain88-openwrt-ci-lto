@@ -1,4 +1,4 @@
-name: Taiyi-Stable
+name: m2-nowifi-Stable
 
 on:
   workflow_dispatch:
