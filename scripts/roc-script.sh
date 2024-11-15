@@ -5,7 +5,7 @@ sed -i 's/192.168.1.1/192.168.2.1/g' package/base-files/files/bin/config_generat
 # sed -i 's/&status_blue/\&status_green/g' target/linux/qualcommax/files/arch/arm64/boot/dts/qcom/ipq6000-re-ss-01.dts
 
 # 修改太乙启动LED为绿色，运行LED为蓝色(VIKINGYFY项目)
-# sed -i 's/boot/roc/g; s/running/boot/g; s/roc/running/g' target/linux/qualcommax/files/arch/arm64/boot/dts/qcom/ipq6010-re-cs-07.dts
+sed -i 's/boot/roc/g; s/running/boot/g; s/roc/running/g' target/linux/qualcommax/files/arch/arm64/boot/dts/qcom/ipq6010-re-cs-07.dts
 
 # 移除要替换的包
 rm -rf feeds/packages/net/alist
@@ -29,6 +29,10 @@ git_sparse_clone main https://github.com/kenzok8/small-package adguardhome luci-
 git_sparse_clone master https://github.com/immortalwrt/packages net/ariang 
 git clone --depth=1 https://github.com/lwb1978/openwrt-gecoosac package/openwrt-gecoosac
 git clone --depth=1 https://github.com/gdy666/luci-app-lucky package/lucky
+git_sparse_clone main https://github.com/kenzok8/small-package adguardhome luci-app-adguardhome cdnspeedtest luci-app-cloudflarespeedtest luci-app-wolplus
+git clone --depth=1 https://github.com/sirpdboy/luci-app-ddns-go package/ddns-go
+git clone --depth=1 https://github.com/xiaorouji/openwrt-passwall package/passwall
+git clone --depth=1 https://github.com/morytyann/OpenWrt-mihomo package/mihomo
 
 ./scripts/feeds update -a
 ./scripts/feeds install -a
