@@ -1,4 +1,4 @@
-name: Taiyi-Stable
+name: Taiyi-Stable-Libwrt
 
 on:
   workflow_dispatch:
@@ -6,15 +6,15 @@ on:
   #   - cron: 0 20 * * *
 
 env:
-  REPO_URL: https://github.com/laipeng668/immortalwrt.git
-  REPO_BRANCH: openwrt-24.10
+  REPO_URL: https://github.com/LiBwrt/openwrt-6.x.git
+  REPO_BRANCH: main
   CONFIG_FILE: configs/Taiyi.config
   DIY_SCRIPT: scripts/roc-script.sh
   CLASH_KERNEL: amd64
   CACHE_TOOLCHAIN: true
   UPLOAD_BIN_DIR: false
   FIRMWARE_RELEASE: true
-  FIRMWARE_TAG: Taiyi-Stable
+  FIRMWARE_TAG: Taiyi-Stable-Libwrt
   TZ: Asia/Shanghai
 
 jobs:
