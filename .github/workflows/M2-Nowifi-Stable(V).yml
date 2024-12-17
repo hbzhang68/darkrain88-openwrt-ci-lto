@@ -3,7 +3,7 @@ name: M2-Nowifi-Stable(V)
 on:
   workflow_dispatch:
   workflow_call:
-  schedule:
+    schedule:
     - cron: 0 10 * * 1
 
 env:
