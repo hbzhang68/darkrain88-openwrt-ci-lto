@@ -1,4 +1,4 @@
-name: Taiyi-Master(B)
+name: M2-nowifi-Master(B)
 
 on:
   workflow_dispatch:
@@ -9,13 +9,13 @@ on:
 env:
   REPO_URL: https://github.com/LiBwrt/openwrt-6.x.git
   REPO_BRANCH: main
-  CONFIG_FILE: configs/Taiyi.config
+  CONFIG_FILE: configs/nowifi.config
   DIY_SCRIPT: scripts/roc-script.sh
   CLASH_KERNEL: amd64
   CACHE_TOOLCHAIN: true
   UPLOAD_BIN_DIR: false
   FIRMWARE_RELEASE: true
-  FIRMWARE_TAG: Taiyi-Master-Libwrt
+  FIRMWARE_TAG: M2-nowifi-Master-Libwrt
   TZ: Asia/Shanghai
 
 jobs:
@@ -172,7 +172,7 @@ jobs:
         body: |
           **This is OpenWrt Firmware for ${{ env.FIRMWARE_TAG }}** (master分支，欢迎下载测试！)
           ### 📒 固件信息(无WIFI)
-          - 这是带NSS的6.6内核固件，默认主题为Argon；Libwrt-Taiyi.config。
+          - 这是带NSS的6.6内核固件，默认主题为Argon；nowifi.config。
           - 💻 这是 ${{ env.FIRMWARE_TAG }} 平台使用的 OpenWrt 固件
           - ⚽ 固件源码: ${{ env.REPO_URL }}
           - 💝 源码分支: ${{ env.REPO_BRANCH }}
