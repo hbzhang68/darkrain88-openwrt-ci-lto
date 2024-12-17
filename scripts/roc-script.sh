@@ -1,5 +1,8 @@
 #!/bin/bash
-
+ 
+sed -i 's/PKG_VERSION:=5\.02\.5184/PKG_VERSION:=5\.02\.5187/' ./feeds/packages/net/softethervpn5/Makefile
+sed -i '/PKG_HASH:=/c\PKG_HASH:=c3ce6ae05ced6f61f28437f213117d1ce1838fbdda365f7dfd57f04dc1bd0b4b' ./feeds/packages/net/softethervpn5/Makefile
+	
 #安装和更新软件包
 UPDATE_PACKAGE() {
 	local PKG_NAME=$1
