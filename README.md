@@ -11,5 +11,5 @@
 - 固件默认管理地址：**`192.168.1.1`** 默认用户：**`root`** 默认密码：**`none`**
 - 源码来源：[VIKINGYFY](https://github.com/VIKINGYFY/immortalwrt)
 - 还有breeze 大B
-感谢ROC
+感谢ROC(https://github.com/laipeng668)
 
