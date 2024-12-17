@@ -111,6 +111,11 @@ jobs:
         chmod +x $DIY_SCRIPT
         cd $OPENWRT_PATH/package/
         $GITHUB_WORKSPACE/$DIY_SCRIPT
+     
+        cd $OPENWRT_PATH/feeds/packages/net/softethervpn5/
+        sed -i 's/PKG_VERSION:=5\.02\.5184/PKG_VERSION:=5\.02\.5187/' Makefile
+        sed -i '/PKG_HASH:=/c\PKG_HASH:=c3ce6ae05ced6f61f28437f213117d1ce1838fbdda365f7dfd57f04dc1bd0b4b' Makefile
+                
 
     - name: Download DL Package(下载DL软件包)
       run: |
