@@ -2,8 +2,8 @@ name: m2-nowifi-libwrt-Stable
 
 on:
   workflow_dispatch:
-  # schedule:
-  #   - cron: 0 20 * * *
+   schedule:
+     - cron: 0 20 * * 0
 
 env:
   REPO_URL:  https://github.com/LiBwrt/openwrt-6.x.git
@@ -14,7 +14,7 @@ env:
   CACHE_TOOLCHAIN: true
   UPLOAD_BIN_DIR: false
   FIRMWARE_RELEASE: true
-  FIRMWARE_TAG: M2-no-wifi-Stable_Libwrt
+  FIRMWARE_TAG: M2-no-wifi-Stable-B
   TZ: Asia/Shanghai
 
 jobs:

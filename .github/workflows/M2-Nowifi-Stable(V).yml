@@ -3,8 +3,8 @@ name: M2-Nowifi-Stable(V)
 on:
   workflow_dispatch:
   workflow_call:
-  # schedule:
-  #   - cron: 0 20 * * *
+   schedule:
+     - cron: 0 10 * * 1
 
 env:
   REPO_URL: https://github.com/laipeng668/immortalwrt.git
