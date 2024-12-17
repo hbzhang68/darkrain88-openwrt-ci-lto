@@ -77,6 +77,6 @@ UPDATE_VERSION() {
 UPDATE_VERSION "sing-box"
 UPDATE_VERSION "tailscale"
 UPDATE_VERSION "zerotier"
-UPDATE_VERSION "softethervpn5"
+#UPDATE_VERSION "softethervpn5"
 UPDATE_VERSION "xray-core"
 UPDATE_VERSION "cloudflared"
