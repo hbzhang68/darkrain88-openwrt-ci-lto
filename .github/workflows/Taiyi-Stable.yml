@@ -1,7 +1,8 @@
-name: Taiyi-Stable
+name: Taiyi-Stable(V)
 
 on:
   workflow_dispatch:
+  workflow_call:
   # schedule:
   #   - cron: 0 20 * * *
 
@@ -14,12 +15,12 @@ env:
   CACHE_TOOLCHAIN: true
   UPLOAD_BIN_DIR: false
   FIRMWARE_RELEASE: true
-  FIRMWARE_TAG: Taiyi-Stable
+  FIRMWARE_TAG: Taiyi-Stable-V
   TZ: Asia/Shanghai
 
 jobs:
   Build:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
 
     steps:
     - name: Check Server Performance(检查服务器性能)
@@ -111,11 +112,6 @@ jobs:
         chmod +x $DIY_SCRIPT
         cd $OPENWRT_PATH/package/
         $GITHUB_WORKSPACE/$DIY_SCRIPT
-        
-        cd $OPENWRT_PATH/feeds/packages/net/softethervpn5/
-        sed -i 's/PKG_VERSION:=5\.02\.5184/PKG_VERSION:=5\.02\.5187/' Makefile
-        sed -i '/PKG_HASH:=/c\PKG_HASH:=c3ce6ae05ced6f61f28437f213117d1ce1838fbdda365f7dfd57f04dc1bd0b4b' Makefile
-        
 
     - name: Download DL Package(下载DL软件包)
       run: |
@@ -175,8 +171,8 @@ jobs:
         artifacts: ${{ env.FIRMWARE_PATH }}/*
         body: |
           **This is OpenWrt Firmware for ${{ env.FIRMWARE_TAG }}** (24.10分支，欢迎下载测试！)
-          ### 📒 固件信息(带WIFI)
-          - 这是带WIFI以及NSS的6.6内核固件，默认主题为Argon；该固件在ImmortalWrt的基础上，添加了额外的软件包cpufreq、ddns、ttyd、upnp、wol、samba4、vlmcsd、aria2、autoreboot、uhttpd、wifischedule、frps、frpc、diskman、hd-idle、banip、acme、arpbind、usb-printer、homeproxy、alist、adguardhome、filebrowser、dockerman、gecoosac、lucky，并添加了若干工具，具体详见Arthur&Athena.config。
+          ### 📒 固件信息(无WIFI)
+          - 这是带WIFI以及NSS的6.6内核固件，默认主题为Argon；该固件在ImmortalWrt的基础上，添加了额外的软件包cpufreq、ddns、ttyd、upnp、wol、samba4、vlmcsd、aria2、autoreboot、uhttpd、frps、frpc、diskman、hd-idle、banip、acme、arpbind、usb-printer、homeproxy、alist、adguardhome、filebrowser、dockerman、gecoosac、lucky，并添加了若干工具，具体详见Taiyi.config。
           - 💻 这是 ${{ env.FIRMWARE_TAG }} 平台使用的 OpenWrt 固件
           - ⚽ 固件源码: ${{ env.REPO_URL }}
           - 💝 源码分支: ${{ env.REPO_BRANCH }}
