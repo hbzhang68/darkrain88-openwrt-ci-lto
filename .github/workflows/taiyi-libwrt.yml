@@ -1,25 +1,26 @@
-name: Taiyi-Stable-Libwrt
+name: Taiyi-Stable(B)
 
 on:
   workflow_dispatch:
+  workflow_call:
   # schedule:
   #   - cron: 0 20 * * *
 
 env:
   REPO_URL: https://github.com/LiBwrt/openwrt-6.x.git
-  REPO_BRANCH: main
+  REPO_BRANCH: openwrt-24.10
   CONFIG_FILE: configs/Taiyi.config
-  DIY_SCRIPT: scripts/roc-script.sh
+  DIY_SCRIPT: scripts/Roc-script.sh
   CLASH_KERNEL: amd64
   CACHE_TOOLCHAIN: true
   UPLOAD_BIN_DIR: false
   FIRMWARE_RELEASE: true
-  FIRMWARE_TAG: Taiyi-Stable-Libwrt
+  FIRMWARE_TAG: Taiyi-Stable
   TZ: Asia/Shanghai
 
 jobs:
   Build:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
 
     steps:
     - name: Check Server Performance(检查服务器性能)
@@ -109,13 +110,8 @@ jobs:
         [ -e files ] && mv files $OPENWRT_PATH/files
         [ -e $CONFIG_FILE ] && mv $CONFIG_FILE $OPENWRT_PATH/.config
         chmod +x $DIY_SCRIPT
-        cd $OPENWRT_PATH/package/
+        cd $OPENWRT_PATH
         $GITHUB_WORKSPACE/$DIY_SCRIPT
-     
-        cd $OPENWRT_PATH/feeds/packages/net/softethervpn5/
-        sed -i 's/PKG_VERSION:=5\.02\.5184/PKG_VERSION:=5\.02\.5187/' Makefile
-        sed -i '/PKG_HASH:=/c\PKG_HASH:=c3ce6ae05ced6f61f28437f213117d1ce1838fbdda365f7dfd57f04dc1bd0b4b' Makefile
-                
 
     - name: Download DL Package(下载DL软件包)
       run: |
@@ -174,13 +170,13 @@ jobs:
         token: ${{ secrets.GITHUB_TOKEN }}
         artifacts: ${{ env.FIRMWARE_PATH }}/*
         body: |
-          **This is OpenWrt Firmware for ${{ env.FIRMWARE_TAG }}** (main分支，欢迎下载测试！)
-          ### 📒 固件信息(no-WIFI)
-          - 这是带NSS的6.6内核固件，默认主题为Argon；该固件breeze Libwrt。
+          **This is OpenWrt Firmware for ${{ env.FIRMWARE_TAG }}** (24.10分支，欢迎下载测试！)
+          ### 📒 固件信息(无WIFI)
+          - 这是带WIFI以及NSS的6.6内核固件，默认主题为Argon；该固件在ImmortalWrt的基础上，添加了额外的软件包cpufreq、ddns、ttyd、upnp、wol、samba4、vlmcsd、aria2、autoreboot、uhttpd、frps、frpc、diskman、hd-idle、banip、acme、arpbind、usb-printer、homeproxy、alist、adguardhome、filebrowser、dockerman、gecoosac、lucky，并添加了若干工具，具体详见Taiyi.config。
           - 💻 这是 ${{ env.FIRMWARE_TAG }} 平台使用的 OpenWrt 固件
           - ⚽ 固件源码: ${{ env.REPO_URL }}
           - 💝 源码分支: ${{ env.REPO_BRANCH }}
-          - 🌐 默认地址: **192.168.1.1**
+          - 🌐 默认地址: **192.168.2.1**
           - 🔑 默认密码: 无
           ### 🧊 固件版本
           - 固件内核版本：**${{ env.VERSION_KERNEL }}**
