@@ -3,7 +3,7 @@ name: Taiyi-Stable(V)
 on:
   workflow_dispatch:
   workflow_call:
-   schedule:
+  schedule:
      - cron: 0 20 * * 4
 
 env:

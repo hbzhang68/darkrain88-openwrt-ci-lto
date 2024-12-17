@@ -2,7 +2,7 @@ name: m2-nowifi-libwrt-Stable
 
 on:
   workflow_dispatch:
-   schedule:
+  schedule:
      - cron: 0 20 * * 0
 
 env:

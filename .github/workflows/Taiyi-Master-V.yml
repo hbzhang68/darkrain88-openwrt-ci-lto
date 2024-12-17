@@ -3,7 +3,7 @@ name: Taiyi-Master(V)
 on:
   workflow_dispatch:
   workflow_call:
-   schedule:
+  schedule:
      - cron: 0 20 * * 2
 
 env:

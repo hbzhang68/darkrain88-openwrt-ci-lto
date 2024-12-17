@@ -3,7 +3,7 @@ name: M2-nowifi-Master(V)
 on:
   workflow_dispatch:
   workflow_call:
-   schedule:
+  schedule:
      - cron: 0 20 * * 6
 
 env:
