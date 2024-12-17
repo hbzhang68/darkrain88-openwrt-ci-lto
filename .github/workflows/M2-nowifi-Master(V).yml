@@ -1,4 +1,4 @@
-name: M2-nowifi-Master(B)
+name: M2-nowifi-Master(V)
 
 on:
   workflow_dispatch:
@@ -7,7 +7,7 @@ on:
   #   - cron: 0 20 * * *
 
 env:
-  REPO_URL: https://github.com/LiBwrt/openwrt-6.x.git
+  REPO_URL: https://github.com/VIKINGYFY/immortalwrt.git
   REPO_BRANCH: main
   CONFIG_FILE: configs/m2-nowifi.config
   DIY_SCRIPT: scripts/roc-script.sh
@@ -15,7 +15,7 @@ env:
   CACHE_TOOLCHAIN: true
   UPLOAD_BIN_DIR: false
   FIRMWARE_RELEASE: true
-  FIRMWARE_TAG: M2-nowifi-Master-Libwrt
+  FIRMWARE_TAG: M2-nowifi-Master(V)
   TZ: Asia/Shanghai
 
 jobs:
@@ -171,8 +171,7 @@ jobs:
         artifacts: ${{ env.FIRMWARE_PATH }}/*
         body: |
           **This is OpenWrt Firmware for ${{ env.FIRMWARE_TAG }}** (master分支，欢迎下载测试！)
-          ### 📒 固件信息(无WIFI)
-          - 这是带NSS的6.6内核固件，默认主题为Argon；nowifi.config。
+          ### 📒 ZN m2固件信息(无WIFI)
           - 💻 这是 ${{ env.FIRMWARE_TAG }} 平台使用的 OpenWrt 固件
           - ⚽ 固件源码: ${{ env.REPO_URL }}
           - 💝 源码分支: ${{ env.REPO_BRANCH }}
