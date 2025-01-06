@@ -172,11 +172,11 @@ jobs:
         body: |
           **This is OpenWrt Firmware for ${{ env.FIRMWARE_TAG }}** (6.12内核分支，欢迎下载测试！)
           ### 📒 固件信息(无WIFI)
-          - mosdns pw softether cloudflared，acme，ddns-go，zerotier，hp具体详见Taiyi.config。
+          - mosdns pw softether docker cloudflared，acme，ddns-go，zerotier，hp具体详见Taiyi.config。
           - 💻 这是 ${{ env.FIRMWARE_TAG }} 平台使用的 OpenWrt 固件
           - ⚽ 固件源码: ${{ env.REPO_URL }}
           - 💝 源码分支: ${{ env.REPO_BRANCH }}
-          - 🌐 默认地址: **192.168.2.1**
+          - 🌐 默认地址: **192.168.1.1**
           - 🔑 默认密码: 无
           ### 🧊 固件版本
           - 固件编译前最后一次➦[主源码](${{ env.REPO_URL }})更新记录
