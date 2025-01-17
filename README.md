@@ -9,7 +9,7 @@
 
 ## 项目说明
 - 固件默认管理地址：**`192.168.1.1`** 默认用户：**`root`** 默认密码：**`none`**
-- 源码来源：[VIKINGYFY](https://github.com/VIKINGYFY/immortalwrt)
+- 源码来源：[VIKINGYFY](https://github.com/VIKINGYFY/immortalwrt)  [大b](https://github.com/LiBwrt/openwrt-6.x)
 - 还有breeze [大B](https://github.com/breeze303)
 感谢[ROC](https://github.com/laipeng668)
 
