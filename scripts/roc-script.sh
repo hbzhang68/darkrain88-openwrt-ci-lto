@@ -1,4 +1,8 @@
 #!/bin/bash
+
+PKG_PATH="$OPENWRT_PATH/package/"
+
+
  #调整 softethervpn5版本 5187
 #sed -i 's/PKG_VERSION:=5\.02\.5184/PKG_VERSION:=5\.02\.5187/' ../feeds/packages/net/softethervpn5/Makefile
 #sed -i '/PKG_HASH:=/c\PKG_HASH:=c3ce6ae05ced6f61f28437f213117d1ce1838fbdda365f7dfd57f04dc1bd0b4b' ../feeds/packages/net/softethervpn5/Makefile
@@ -135,4 +139,28 @@ if [ -f "$CM_FILE" ]; then
 	sed -i 's/mkdir/mkdir -p/g' $CM_FILE
 
 	cd $PKG_PATH && echo "coremark has been fixed!"
+fi
+
+#修复TailScale配置文件冲突
+TS_FILE=$(find ../feeds/packages/ -maxdepth 3 -type f -wholename "*/tailscale/Makefile")
+if [ -f "$TS_FILE" ]; then
+	sed -i '/\/files/d' $TS_FILE
+
+	cd $PKG_PATH && echo "tailscale has been fixed!"
+fi
+
+#修改qca-nss-drv启动顺序
+NSS_DRV="../feeds/nss_packages/qca-nss-drv/files/qca-nss-drv.init"
+if [ -f "$NSS_DRV" ]; then
+	sed -i 's/START=.*/START=85/g' $NSS_DRV
+
+	cd $PKG_PATH && echo "qca-nss-drv has been fixed!"
+fi
+
+#修改qca-nss-pbuf启动顺序
+NSS_PBUF="./kernel/mac80211/files/qca-nss-pbuf.init"
+if [ -f "$NSS_PBUF" ]; then
+	sed -i 's/START=.*/START=86/g' $NSS_PBUF
+
+	cd $PKG_PATH && echo "qca-nss-pbuf has been fixed!"
 fi
