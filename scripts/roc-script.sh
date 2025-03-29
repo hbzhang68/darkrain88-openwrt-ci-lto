@@ -164,3 +164,10 @@ if [ -f "$NSS_PBUF" ]; then
 
 	cd $PKG_PATH && echo "qca-nss-pbuf has been fixed!"
 fi
+
+#无WIFI配置调整Q6大小
+DTS_PATH="./target/linux/qualcommax/files/arch/arm64/boot/dts/qcom/"
+ find "$DTS_PATH" -type f ! -iname '*nowifi*' -exec sed -i \
+      -e '/#include "ipq6018.dtsi"/a #include "ipq6018-nowifi.dtsi"' \
+      -e '/#include "ipq8074.dtsi"/a #include "ipq8074-nowifi.dtsi"' {} +
+    echo "qualcommax set up nowifi successfully!"
