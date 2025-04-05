@@ -58,6 +58,8 @@ UPDATE_PACKAGE() {
 	fi
 }
 
+git clone --depth=1 https://github.com/esirplayground/luci-app-poweroff package/luci-app-poweroff
+
 # 调用示例
 # UPDATE_PACKAGE "OpenAppFilter" "destan19/OpenAppFilter" "master" "" "custom_name1 custom_name2"
 # UPDATE_PACKAGE "open-app-filter" "destan19/OpenAppFilter" "master" "" "luci-app-appfilter oaf" 这样会把原有的open-app-filter，luci-app-appfilter，oaf相关组件删除，不会出现coremark错误。
