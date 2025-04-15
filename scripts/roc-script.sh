@@ -68,7 +68,7 @@ UPDATE_PACKAGE "argon" "sbwml/luci-theme-argon" "openwrt-24.10"
 UPDATE_PACKAGE "homeproxy" "VIKINGYFY/homeproxy" "main"
 UPDATE_PACKAGE "nikki" "nikkinikki-org/OpenWrt-nikki" "main"
 UPDATE_PACKAGE "openclash" "vernesong/OpenClash" "dev" "pkg"
-UPDATE_PACKAGE "passwall" "xiaorouji/openwrt-passwall" "main" "pkg"
+UPDATE_PACKAGE "passwall2" "xiaorouji/openwrt-passwall2" "main" "pkg"
 UPDATE_PACKAGE "ssr-plus" "fw876/helloworld" "master"
 
 UPDATE_PACKAGE "luci-app-tailscale" "asvow/luci-app-tailscale" "main"
@@ -132,6 +132,12 @@ UPDATE_VERSION "zerotier"
 UPDATE_VERSION "softethervpn5"
 UPDATE_VERSION "xray-core"
 UPDATE_VERSION "cloudflared"
+
+DTS_PATH="./target/linux/qualcommax/files/arch/arm64/boot/dts/qcom/"
+find "$DTS_PATH" -type f ! -iname '*nowifi*' -exec sed -i \
+      -e '/#include "ipq6018.dtsi"/a #include "ipq6018-nowifi.dtsi"' \
+      -e '/#include "ipq8074.dtsi"/a #include "ipq8074-nowifi.dtsi"' {} +
+    echo "qualcommax set up nowifi successfully!"
 
 #修复Coremark编译失败
 CM_FILE=$(find ../feeds/packages/ -maxdepth 3 -type f -wholename "*/coremark/Makefile")
